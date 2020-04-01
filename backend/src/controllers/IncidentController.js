@@ -12,7 +12,9 @@ module.exports = {
         .offset((page - 1) * 5)
         .select(['incident.*', 'ong.name', 'ong.email']);
 
-        response.header('X-Total-Count', count['count(*)']);
+        let countAux = count['count(*)'];
+        console.log('count', countAux);
+        response.header('X-Total-Count', countAux);
 
         return response.json(incidents);
     },
